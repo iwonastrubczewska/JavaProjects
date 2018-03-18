@@ -43,9 +43,9 @@ public class BankImpl implements Bank {
     public long getBalance(Integer id) throws AccountIdException
     {
         for(Account a : list)
-            if(id.equals(a.getId())) return a.getBalance();
-
-        throw new  AccountIdException();
+            if(id.equals(a.getId()))
+                return a.getBalance();
+         throw new  AccountIdException();
     }
 
 
