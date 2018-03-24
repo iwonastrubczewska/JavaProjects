@@ -11,5 +11,14 @@
 
     <artifactId>Bank-Client</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>Project</groupId>
+            <artifactId>Bank-Core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
