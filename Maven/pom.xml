@@ -10,10 +10,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>BankClient</module>
-        <module>BankCore</module>
-    </modules>
 
+        <module>BankCore</module>
+        <module>BankClient</module>
+
+    </modules>
 
     <build>
         <plugins>
