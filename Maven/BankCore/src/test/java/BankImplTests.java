@@ -1,6 +1,7 @@
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Assert;
 
 public class BankImplTests {
 
@@ -59,7 +60,7 @@ public class BankImplTests {
         long transfer = bank.getList().get(0).getBalance();
         bank.deposit(0,1000);
         bank.transfer(0,1,1000);
-        assertEquals(transfer, bank.getList().get(0).getBalance());
+        Assert.assertEquals(transfer, bank.getList().get(0).getBalance());
     }
 
     @Test
