@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/BankClient/BankClient.iml" filepath="$PROJECT_DIR$/BankClient/BankClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/BankCore/BankCore.iml" filepath="$PROJECT_DIR$/BankCore/BankCore.iml" />
       <module fileurl="file://$PROJECT_DIR$/Maven.iml" filepath="$PROJECT_DIR$/Maven.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Maven.iml" filepath="$PROJECT_DIR$/Maven.iml" />
     </modules>
   </component>
 </project>

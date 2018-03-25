@@ -11,7 +11,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Bank-Client" target="1.5" />
       <module name="BankClient" target="1.8" />
       <module name="BankCore" target="1.8" />
       <module name="Maven" target="1.8" />

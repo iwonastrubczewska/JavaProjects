@@ -1,5 +1,5 @@
-Bank$AccountIdException.class
-BankImpl.class
-Bank$InsufficientFundsException.class
-Bank.class
-Account.class
+Project\Account.class
+Project\Bank.class
+Project\Bank$AccountIdException.class
+Project\Bank$InsufficientFundsException.class
+Project\BankImpl.class
