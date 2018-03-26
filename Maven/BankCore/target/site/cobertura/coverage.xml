@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.9491525423728814" branch-rate="0.8055555555555556" lines-covered="56" lines-valid="59" branches-covered="29" branches-valid="36" complexity="2.380952380952381" version="2.1.1" timestamp="1522071350705">
+<coverage line-rate="0.9491525423728814" branch-rate="0.8055555555555556" lines-covered="56" lines-valid="59" branches-covered="29" branches-valid="36" complexity="2.380952380952381" version="2.1.1" timestamp="1522073073732">
 	<sources>
 		<source>--source</source>
 		<source>C:/Users/Iwona/Desktop/Local Rep/Maven/BankCore/target/generated-sources/annotations</source>
