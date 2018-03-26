@@ -1,11 +1,10 @@
 package Project;
 
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Assert;
 
-public class BankImplTests {
+public class BankImplTest {
 
     private static  BankImpl bank;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.0" branch-rate="0.0" lines-covered="0" lines-valid="193" branches-covered="0" branches-valid="4" complexity="0.0" version="2.1.1" timestamp="1522012927359">
+<coverage line-rate="0.0" branch-rate="0.0" lines-covered="0" lines-valid="193" branches-covered="0" branches-valid="4" complexity="0.0" version="2.1.1" timestamp="1522071360918">
 	<sources>
 		<source>C:/Users/Iwona/Desktop/Local Rep/Maven/BankClient/target/generated-sources/annotations</source>
 		<source>--source</source>
