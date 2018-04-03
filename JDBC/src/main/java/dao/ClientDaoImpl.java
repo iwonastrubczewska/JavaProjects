@@ -19,32 +19,42 @@ public class ClientDaoImpl implements ClientDao {
         Connection conn = ConnectionFactory.connect();
         PreparedStatement statement = null;
         try {
-            statement = conn.prepareStatement(SQL);
-            statement.setString(1, c.getFirstName());
-            statement.setString(2, c.getLastName());
-            statement.setString(3, c.getPesel());
-            statement.setString(4, c.getEmail());
+            if (conn != null) {
+                statement = conn.prepareStatement(SQL);
+                statement.setString(1, c.getFirstName());
+                statement.setString(2, c.getLastName());
+                statement.setString(3, c.getPesel());
+                statement.setString(4, c.getEmail());
 
-            statement.executeUpdate();
+                statement.executeUpdate();
+            }
+
         }
         catch (SQLException ex) {
             throw new DataAccessException(ex);
         }
 
-        statement.close();
-        conn.close();
+        if (statement != null) {
+            statement.close();
+        }
+        if (conn != null) {
+            conn.close();
+        }
     }
 
     @Override
-    public void delete(Client c) throws SQLException {
+    public void delete(Integer id) throws SQLException {
 
         Connection conn = ConnectionFactory.connect();
         final String SQL = "delete from CLIENT where id=?";
         PreparedStatement statement = null;
         try {
-            statement = conn.prepareStatement(SQL);
-            statement.setInt(1, c.getId());
-            statement.executeUpdate();
+            if (conn != null) {
+                statement = conn.prepareStatement(SQL);
+            }
+            if (statement != null) {
+                statement.executeUpdate();
+            }
         }
         catch (SQLException ex) {
             throw new DataAccessException(ex);
@@ -60,13 +70,16 @@ public class ClientDaoImpl implements ClientDao {
         final String SQL = "update CLIENT set firstName=?, lastName=?, email=? where id=?";
         try {
             Connection conn = ConnectionFactory.connect();
-            statement = conn.prepareStatement(SQL);
-            statement.setString(1,c.getFirstName());
-            statement.setString(2,c.getLastName());
-            statement.setString(3,c.getEmail());
-            statement.setInt(4,c.getId());
+            if (conn != null) {
+                statement = conn.prepareStatement(SQL);
+                statement.setString(1,c.getFirstName());
+                statement.setString(2,c.getLastName());
+                statement.setString(3,c.getEmail());
+                statement.setInt(4,c.getId());
 
-            statement.executeUpdate();
+                statement.executeUpdate();
+            }
+
 
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -10,6 +10,14 @@ public class Client {
 
         public Client(){}
 
+        public Client( String firstName, String lastName, String pesel, String email){
+
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.pesel = pesel;
+            this.email = email;
+        }
+
 
         public String getEmail() {
             return email;
