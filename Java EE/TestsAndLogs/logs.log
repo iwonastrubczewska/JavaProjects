@@ -1,0 +1,54 @@
+[INFO ] 2018-03-19 17:44:14  - Uruchomienie aplikacji
+[INFO ] 2018-03-19 17:54:50  - wybranie opcji tworzenia konta
+[DEBUG] 2018-03-19 17:54:52  - utworzono konto
+[INFO ] 2018-03-19 17:54:54  - wybranie opcji tworzenia konta
+[DEBUG] 2018-03-19 17:54:58  - utworzono konto
+[INFO ] 2018-03-19 17:54:59  - wybranie opcji szukania konta
+[DEBUG] 2018-03-19 17:55:00  - znaleziono konto
+[INFO ] 2018-03-19 17:55:03  - wybranie opcji wypłaty gotówki
+[ERROR] 2018-03-19 17:55:06  - Brak wystarczających środków na koncie, operacja przerwana
+[INFO ] 2018-03-19 17:55:11  - wybranie opcji wypłaty gotówki
+[ERROR] 2018-03-19 17:55:14  - Brak konta o podanym id, operacja przerwana
+[INFO ] 2018-03-19 17:55:17  - wybranie opcji wpłaty gotówki
+[DEBUG] 2018-03-19 17:55:23  - Na konto wpłynęły nowe srodki
+[INFO ] 2018-03-19 17:55:24  - wybranie opcji przelew
+[ERROR] 2018-03-19 17:55:29  - Wprowadzono niepoprawny format danych 
+[INFO ] 2018-03-19 17:55:31  - wybranie opcji przelew
+[DEBUG] 2018-03-19 17:55:37  - Operacja przebiegła pomyślnie
+[INFO ] 2018-03-19 17:55:38  - wybranie opcji sprawdź stan konta
+[DEBUG] 2018-03-19 17:55:39  - Operacja przebiegła pomyślnie
+[INFO ] 2018-03-19 17:55:40  - wybranie opcji sprawdź stan konta
+[DEBUG] 2018-03-19 17:55:42  - Operacja przebiegła pomyślnie
+[INFO ] 2018-03-19 17:55:45  - Zakończenie pracy aplikacji
+[INFO ] 2018-03-19 18:24:51  - Uruchomienie aplikacji
+[INFO ] 2018-03-19 18:24:52  - wybranie opcji szukania konta
+[DEBUG] 2018-03-19 18:24:54  - nie znaleziono konta
+[INFO ] 2018-03-19 18:24:55  - wybranie opcji szukania konta
+[DEBUG] 2018-03-19 18:24:56  - nie znaleziono konta
+[INFO ] 2018-03-19 18:25:05  - wybranie opcji tworzenia konta
+[DEBUG] 2018-03-19 18:25:07  - utworzono konto
+[INFO ] 2018-03-19 18:25:07  - wybranie opcji szukania konta
+[DEBUG] 2018-03-19 18:25:09  - znaleziono konto
+[INFO ] 2018-03-19 18:25:10  - Zakończenie pracy aplikacji
+[INFO ] 2018-03-19 18:26:33  - Uruchomienie aplikacji
+[INFO ] 2018-03-19 18:26:38  - Zakończenie pracy aplikacji
+[INFO ] 2018-03-19 20:14:28  - Uruchomienie aplikacji
+[INFO ] 2018-03-19 20:16:25  - wybranie opcji tworzenia konta
+[DEBUG] 2018-03-19 20:16:28  - utworzono konto
+[INFO ] 2018-03-19 20:16:30  - wybranie opcji tworzenia konta
+[DEBUG] 2018-03-19 20:16:32  - utworzono konto
+[INFO ] 2018-03-19 20:16:40  - wybranie opcji szukania konta
+[DEBUG] 2018-03-19 20:16:41  - znaleziono konto
+[INFO ] 2018-03-19 20:16:44  - wybranie opcji wypłaty gotówki
+[ERROR] 2018-03-19 20:16:45  - Wprowadzono niepoprawny format danych 
+[INFO ] 2018-03-19 20:16:46  - wybranie opcji wpłaty gotówki
+[ERROR] 2018-03-19 20:16:47  - Wprowadzono niepoprawny format danych 
+[INFO ] 2018-03-19 20:16:47  - wybranie opcji przelew
+[ERROR] 2018-03-19 20:16:48  - Wprowadzono niepoprawny format danych 
+[INFO ] 2018-03-19 20:16:49  - wybranie opcji sprawdź stan konta
+[ERROR] 2018-03-19 20:16:50  - Wprowadzono niepoprawny format danych 
+[INFO ] 2018-03-19 20:18:10  - Uruchomienie aplikacji
+[INFO ] 2018-03-19 20:18:15  - Zakończenie pracy aplikacji
+[INFO ] 2018-03-19 20:20:27  - Zakończenie pracy aplikacji
+[INFO ] 2018-03-19 20:20:40  - Uruchomienie aplikacji
+[INFO ] 2018-03-19 20:20:41  - Zakończenie pracy aplikacji

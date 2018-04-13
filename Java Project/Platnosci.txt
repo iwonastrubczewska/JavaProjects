@@ -1,0 +1,84 @@
+1000000013
+121545465
+1851.9
+CHF
+Wed Jun 07 16:10:08 CEST 2017
+Transakcja zaakceptowana
+1000000019
+546454821
+1123.8
+PLN
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000028
+741852963
+231.44
+CHF
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000046
+741852955
+58.81
+EUR
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000009
+741852963
+1195.19
+CHF
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000025
+121545465
+3018.01
+CHF
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000024
+741852963
+1085.77
+UAH
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000020
+123656846
+684.09
+PLN
+Wed Jun 07 16:10:09 CEST 2017
+Transakcja zaakceptowana
+1000000006
+121545465
+48.14
+USD
+Wed Jun 07 16:10:10 CEST 2017
+Transakcja zaakceptowana
+1000000041
+546454821
+2801.2
+PLN
+Wed Jun 07 16:10:10 CEST 2017
+Transakcja zaakceptowana
+1000000039
+741852955
+1003.66
+EUR
+Wed Jun 07 16:10:10 CEST 2017
+Transakcja zaakceptowana
+1000000044
+132154564
+6246.02
+PLN
+Wed Jun 07 16:10:10 CEST 2017
+Transakcja zaakceptowana
+1000000038
+546454821
+3880.67
+CHF
+Wed Jun 07 16:10:10 CEST 2017
+Transakcja odrzucona
+1000000053
+123456985
+1697.73
+EUR
+Wed Jun 07 16:10:10 CEST 2017
+Transakcja zaakceptowana
