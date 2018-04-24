@@ -38,10 +38,10 @@ public class main extends Application implements EventHandler<ActionEvent> {
     private TextField text3 = new TextField();
     private TextField text4 = new TextField();
     private VBox topMenu = new VBox();
-    private Button b6, b7, b8 ;
+    private Button b6, b7, b8;
     private ListView listView = null;
 
-    public static void main(String[] argv)  {
+    public static void main(String[] argv) {
 
         Connection connect = ConnectionFactory.connect();
         launch(argv);
@@ -73,119 +73,122 @@ public class main extends Application implements EventHandler<ActionEvent> {
 
         String title1 = " Menu ";
         label1.setText(title1);
-        label1.setFont(Font.font ("Times New Roman" , 40));
+        label1.setFont(Font.font("Times New Roman", 40));
         label1.setTextFill(Color.CORAL);
         label1.setTranslateX(165);
 
-        topMenu.getChildren().addAll(label1,b1,b2,b3,b4,b5);
+        topMenu.getChildren().addAll(label1, b1, b2, b3, b4, b5);
 
         BorderPane borderpane = new BorderPane();
         borderpane.setCenter(topMenu);
 
         b1.setOnAction(event -> {
 
+            clear();
+            String title = "Choose one";
+            label2.setText(title);
+            label2.setFont(Font.font("Times New Roman", 20));
+            label2.setTextFill(Color.CORAL);
+            label2.setTranslateX(170);
+
+            topMenu.getChildren().addAll(label2, b7, b8);
+
+            b7.setOnAction(e -> {
+                clear();
+                String message1 = "Save Client. \n Enter your data:(first name, last name, pesel, email ";
+                label3.setText(message1);
+                label3.setFont(Font.font("Times New Roman", 20));
+                label3.setTextFill(Color.CORAL);
+                //label3.setTranslateX(100);
+                topMenu.getChildren().addAll(label3, text1, text2, text3, text4, b6);
+
+                b6.setOnAction(ev -> {
                     clear();
-                    String title = "Choose one";
-                    label2.setText(title);
-                    label2.setFont(Font.font ("Times New Roman" , 20));
-                    label2.setTextFill(Color.CORAL);
-                    label2.setTranslateX(170);
 
-                    topMenu.getChildren().addAll(label2, b7, b8);
+                    if (text1.getText() != null && text2.getText() != null && text3.getText() != null && text4.getText() != null) {
 
-                    b7.setOnAction(e -> {
-                        clear();
-                        String message1 = "Save Client. \n Enter your data:(first name, last name, pesel, email ";
-                        label3.setText(message1);
-                        label3.setFont(Font.font ("Times New Roman" , 20));
-                        label3.setTextFill(Color.CORAL);
-                        //label3.setTranslateX(100);
-                        topMenu.getChildren().addAll(label3, text1, text2, text3, text4, b6);
+                        Client c = new Client(text1.getText(), text2.getText(), text3.getText(), text4.getText());
+                        ClientDaoImpl clientDao = new ClientDaoImpl();
+                        try {
+                            clientDao.save(c);
+                            String war = "Saved ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.GREEN);
+                            topMenu.getChildren().add(warlab);
 
-                        b6.setOnAction(ev -> {
-                            clear();
+                        } catch (DataAccessException ex) {
+                            String war = "No access ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
 
-                            if (text1.getText() != null && text2.getText() != null && text3.getText() != null && text4.getText() != null) {
+                        } catch (SQLException e1) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        }
 
-                                Client c = new Client(text1.getText(), text2.getText(), text3.getText(), text4.getText());
-                                ClientDaoImpl clientDao = new ClientDaoImpl();
-                                try {
-                                    clientDao.save(c);
-
-                                    String war = "Saved ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.GREEN);
-                                    topMenu.getChildren().add(warlab);
-
-                                } catch (DataAccessException ex) {
-                                    String war = "No access ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.RED);
-                                    topMenu.getChildren().add(warlab);
-
-                                } catch (SQLException e1) {
-                                    String war = " Error ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.RED);
-                                    topMenu.getChildren().add(warlab);
-                                } catch (Exception e)
-                                {
-                                    String war = " Error ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.RED);
-                                    topMenu.getChildren().add(warlab);
-                                }
-
-                            }
-                        });
-                    });
-
-                    b8.setOnAction(e -> {
-                        clear();
-                        String message1 = "Save Account. \n Enter your data:(Notes, Balance, Client ID)";
-                        label3.setText(message1);
-                        label3.setFont(Font.font ("Times New Roman" , 20));
-                        label3.setTextFill(Color.CORAL);
-                        //label3.setTranslateX(100);
-
-                        topMenu.getChildren().addAll(label3, text1, text2, text3, b6);
-
-                        b6.setOnAction(ev -> {
-                            clear();
-
-                            if (text1.getText() != null && text2.getText() != null && text3.getText() != null) {
-                                try {
-                                    Account a = new Account(text1.getText(), Long.parseLong(text2.getText()),Integer.parseInt(text3.getText()));
-                                    AccountDaoImpl accountDao = new AccountDaoImpl();
-                                    accountDao.save(a);
-
-                                    String war = "Saved ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.GREEN);
-                                    topMenu.getChildren().add(warlab);
-
-                                } catch (NumberFormatException ex) {
-                                    String war = "Incorrect Data Format ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.RED);
-                                    topMenu.getChildren().add(warlab);
-                                }catch (DataAccessException ex) {
-                                    String war = "No access ";
-                                    warlab.setText(war);
-                                    warlab.setFont(Font.font ("Times New Roman" , 20));
-                                    warlab.setTextFill(Color.RED);
-                                    topMenu.getChildren().add(warlab);
-                                }
-                            }
-                        });
-                    });
+                    }
                 });
+            });
+
+            b8.setOnAction(e -> {
+                clear();
+                String message1 = "Save Account. \n Enter your data:(Notes, Balance, Client ID)";
+                label3.setText(message1);
+                label3.setFont(Font.font("Times New Roman", 20));
+                label3.setTextFill(Color.CORAL);
+                //label3.setTranslateX(100);
+
+                topMenu.getChildren().addAll(label3, text1, text2, text3, b6);
+
+                b6.setOnAction(ev -> {
+                    clear();
+
+                    if (text1.getText() != null && text2.getText() != null && text3.getText() != null) {
+                        try {
+                            Account a = new Account(text1.getText(), Long.parseLong(text2.getText()), Integer.parseInt(text3.getText()));
+                            AccountDaoImpl accountDao = new AccountDaoImpl();
+                            accountDao.save(a);
+                            String war = "Saved ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.GREEN);
+                            topMenu.getChildren().add(warlab);
+
+                        } catch (NumberFormatException ex) {
+                            String war = "Incorrect Data Format ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (DataAccessException ex) {
+                            String war = "No access ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        }
+                    }
+                });
+            });
+        });
 
 
         b2.setOnAction(event -> {
@@ -193,7 +196,7 @@ public class main extends Application implements EventHandler<ActionEvent> {
             clear();
             String title = "Choose one";
             label2.setText(title);
-            label2.setFont(Font.font ("Times New Roman" , 20));
+            label2.setFont(Font.font("Times New Roman", 20));
             label2.setTextFill(Color.CORAL);
             label2.setTranslateX(170);
 
@@ -205,39 +208,44 @@ public class main extends Application implements EventHandler<ActionEvent> {
                 clear();
                 String message1 = "Update. \n Enter your id)";
                 label3.setText(message1);
-                label3.setFont(Font.font ("Times New Roman" , 20));
+                label3.setFont(Font.font("Times New Roman", 20));
                 label3.setTextFill(Color.CORAL);
                 topMenu.getChildren().addAll(label3, text1, b6);
 
                 b6.setOnAction(ev -> {
                     clear();
-                    if (text1.getText() != null){
+                    if (text1.getText() != null) {
                         ClientDaoImpl clientDao = new ClientDaoImpl();
                         try {
                             clientDao.update(clientDao.findById(Integer.parseInt(text1.getText())));
-
                             String war = "Updated ";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.GREEN);
                             topMenu.getChildren().add(warlab);
-                        }catch (NullPointerException ex){
+                        } catch (NullPointerException ex) {
                             String war = " No account with given id";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
-                        }catch ( NumberFormatException ex) {
+                        } catch (NumberFormatException ex) {
                             String war = " Incorrect Data Format";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
                             // logger.error("Wprowadzono niepoprawny format danych ");
                         } catch (DataAccessException ex) {
                             String war = " No access";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
                         }
@@ -250,7 +258,7 @@ public class main extends Application implements EventHandler<ActionEvent> {
                 clear();
                 String message1 = "Update Account. \n Enter your Account ID";
                 label3.setText(message1);
-                label3.setFont(Font.font ("Times New Roman" , 20));
+                label3.setFont(Font.font("Times New Roman", 20));
                 label3.setTextFill(Color.CORAL);
 
                 topMenu.getChildren().addAll(label3, text1, b6);
@@ -258,34 +266,39 @@ public class main extends Application implements EventHandler<ActionEvent> {
                 b6.setOnAction(ev -> {
                     clear();
 
-                    if (text1.getText() != null ) {
+                    if (text1.getText() != null) {
                         AccountDaoImpl accountDao = new AccountDaoImpl();
                         try {
                             accountDao.update(accountDao.findById(Integer.parseInt(text1.getText())));
-
                             String war = "Updated ";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.GREEN);
                             topMenu.getChildren().add(warlab);
 
-                        } catch (NullPointerException ex){
+                        } catch (NullPointerException ex) {
                             String war = " No account with given id";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
 
-                        } catch (NumberFormatException ex ){
+                        } catch (NumberFormatException ex) {
                             String war = " Incorrect Data Format ";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
-                        }catch (DataAccessException ex) {
+                        } catch (DataAccessException ex) {
                             String war = "No access ";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
                         }
@@ -295,13 +308,11 @@ public class main extends Application implements EventHandler<ActionEvent> {
         });
 
 
-
-
         b3.setOnAction(event -> {
             clear();
             String title = "Choose one";
             label2.setText(title);
-            label2.setFont(Font.font ("Times New Roman" , 20));
+            label2.setFont(Font.font("Times New Roman", 20));
             label2.setTextFill(Color.CORAL);
             label2.setTranslateX(170);
 
@@ -312,7 +323,7 @@ public class main extends Application implements EventHandler<ActionEvent> {
                 clear();
                 String message1 = "Delete Client. \n Enter your id)";
                 label3.setText(message1);
-                label3.setFont(Font.font ("Times New Roman" , 20));
+                label3.setFont(Font.font("Times New Roman", 20));
                 label3.setTextFill(Color.CORAL);
                 topMenu.getChildren().addAll(label3, text1, b6);
 
@@ -325,32 +336,38 @@ public class main extends Application implements EventHandler<ActionEvent> {
 
                         String war = "Removed";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.GREEN);
                         topMenu.getChildren().add(warlab);
-                    }catch (NumberFormatException ex) {
+                    } catch (NumberFormatException ex) {
                         String war = "Incorrect Data Format ";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.RED);
                         topMenu.getChildren().add(warlab);
-                    }catch (NullPointerException ex){
+                    } catch (NullPointerException ex) {
                         String war = " No account with given id";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.RED);
                         topMenu.getChildren().add(warlab);
 
                     } catch (DataAccessException ex) {
                         String war = "No Access ";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.RED);
                         topMenu.getChildren().add(warlab);
-                    }   catch (SQLException e1) {
+                    } catch (SQLException e1) {
                         String war = " Something went wrong ";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
+                        warlab.setTextFill(Color.RED);
+                        topMenu.getChildren().add(warlab);
+                    } catch (Exception ex) {
+                        String war = " Error ";
+                        warlab.setText(war);
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.RED);
                         topMenu.getChildren().add(warlab);
                     }
@@ -361,7 +378,7 @@ public class main extends Application implements EventHandler<ActionEvent> {
                 clear();
                 String message1 = "Delete Account. \n Enter your Account ID";
                 label3.setText(message1);
-                label3.setFont(Font.font ("Times New Roman" , 20));
+                label3.setFont(Font.font("Times New Roman", 20));
                 label3.setTextFill(Color.CORAL);
                 topMenu.getChildren().addAll(label3, text1, b6);
 
@@ -370,164 +387,178 @@ public class main extends Application implements EventHandler<ActionEvent> {
                     clear();
                     if (text1.getText() != null)
                         try {
-                        AccountDaoImpl accountDao = new AccountDaoImpl();
-                        accountDao.delete(accountDao.findById(Integer.parseInt(text1.getText())));
+                            AccountDaoImpl accountDao = new AccountDaoImpl();
+                            accountDao.delete(accountDao.findById(Integer.parseInt(text1.getText())));
 
-                        String war = "Removed";
-                        warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
-                        warlab.setTextFill(Color.GREEN);
-                        topMenu.getChildren().add(warlab);
-                    } catch (NumberFormatException ex) {
+                            String war = "Removed";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.GREEN);
+                            topMenu.getChildren().add(warlab);
+                        } catch (NumberFormatException ex) {
                             String war = "Wprowadzono niepoprawny format danych ";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
-                        } catch (NullPointerException ex){
+                        } catch (NullPointerException ex) {
                             String war = " No account with given id";
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.RED);
                             topMenu.getChildren().add(warlab);
-                        }catch (DataAccessException ex) {
+                        } catch (DataAccessException ex) {
                             String war = " Brak dostępu ";
                             warlab.setText(war);
                             topMenu.getChildren().add(warlab);
-                    }
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        }
                 });
             });
 
         });
 
         b4.setOnAction(event -> {
+            clear();
+            String title = "Choose one";
+            label2.setText(title);
+            label2.setFont(Font.font("Times New Roman", 20));
+            label2.setTextFill(Color.CORAL);
+            label2.setTranslateX(170);
+
+            topMenu.getChildren().addAll(label2, b7, b8);
+
+            b7.setOnAction(e -> {
+
                 clear();
-                String title = "Choose one";
-                label2.setText(title);
-                label2.setFont(Font.font ("Times New Roman" , 20));
-                label2.setTextFill(Color.CORAL);
-                label2.setTranslateX(170);
+                String message1 = "Find Client \n Enter your id)";
+                label3.setText(message1);
+                label3.setFont(Font.font("Times New Roman", 20));
+                label3.setTextFill(Color.CORAL);
+                topMenu.getChildren().addAll(label3, text1, b6);
 
-                topMenu.getChildren().addAll(label2, b7, b8);
 
-                b7.setOnAction(e -> {
-
+                b6.setOnAction(ev -> {
                     clear();
-                    String message1 = "Find Client \n Enter your id)";
-                    label3.setText(message1);
-                    label3.setFont(Font.font ("Times New Roman" , 20));
-                    label3.setTextFill(Color.CORAL);
-                    topMenu.getChildren().addAll(label3, text1, b6);
-
-
-                    b6.setOnAction(ev -> {
-                        clear();
-                        if (text1.getText() != null)
-                            try {
+                    if (text1.getText() != null)
+                        try {
                             ClientDaoImpl clientDao = new ClientDaoImpl();
 
                             String war = clientDao.findById(Integer.parseInt(text1.getText())).toString();
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.GREEN);
                             topMenu.getChildren().add(warlab);
-                        }catch (NumberFormatException ex) {
-                                String war = " Incorrect Data Format";
-                                warlab.setText(war);
-                                warlab.setFont(Font.font ("Times New Roman" , 20));
-                                warlab.setTextFill(Color.RED);
-                                topMenu.getChildren().add(warlab);
+                        } catch (NumberFormatException ex) {
+                            String war = " Incorrect Data Format";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
 
-                            }catch (NullPointerException ex){
-                                String war = " No account with given id";
-                                warlab.setText(war);
-                                warlab.setFont(Font.font ("Times New Roman" , 20));
-                                warlab.setTextFill(Color.RED);
-                                topMenu.getChildren().add(warlab);
+                        } catch (NullPointerException ex) {
+                            String war = " No account with given id";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
 
-                            } catch (DataAccessException ex) {
-                                String war = " No Access ";
-                                warlab.setText(war);
-                                warlab.setFont(Font.font ("Times New Roman" , 20));
-                                warlab.setTextFill(Color.RED);
-                                topMenu.getChildren().add(warlab);
+                        } catch (DataAccessException ex) {
+                            String war = " No Access ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
                         }
-                    });
                 });
-                b8.setOnAction(e -> {
+            });
+            b8.setOnAction(e -> {
 
+                clear();
+                String message1 = "Find Account. \n Enter your Account ID";
+                label3.setText(message1);
+                label3.setFont(Font.font("Times New Roman", 20));
+                label3.setTextFill(Color.CORAL);
+                topMenu.getChildren().addAll(label3, text1, b6);
+
+
+                b6.setOnAction(ev -> {
                     clear();
-                    String message1 = "Find Account. \n Enter your Account ID";
-                    label3.setText(message1);
-                    label3.setFont(Font.font ("Times New Roman" , 20));
-                    label3.setTextFill(Color.CORAL);
-                    topMenu.getChildren().addAll(label3, text1, b6);
-
-
-                    b6.setOnAction(ev -> {
-                        clear();
-                        if (text1.getText() != null)
-                            try {
+                    if (text1.getText() != null)
+                        try {
                             AccountDaoImpl accountDao = new AccountDaoImpl();
 
                             String war = accountDao.findById(Integer.parseInt(text1.getText())).toString();
                             warlab.setText(war);
-                            warlab.setFont(Font.font ("Times New Roman" , 20));
+                            warlab.setFont(Font.font("Times New Roman", 20));
                             warlab.setTextFill(Color.GREEN);
                             topMenu.getChildren().add(warlab);
-                            }catch (NumberFormatException ex) {
-                                String war = "Incorrect Data Format ";
-                                warlab.setText(war);
-                                warlab.setText(war);
-                                warlab.setFont(Font.font ("Times New Roman" , 20));
-                                warlab.setTextFill(Color.RED);
-                                topMenu.getChildren().add(warlab);
-                            }catch (NullPointerException ex){
-                                String war = " No account with given id";
-                                warlab.setText(war);
-                                warlab.setFont(Font.font ("Times New Roman" , 20));
-                                warlab.setTextFill(Color.RED);
-                                topMenu.getChildren().add(warlab);
+                        } catch (NumberFormatException ex) {
+                            String war = "Incorrect Data Format ";
+                            warlab.setText(war);
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (NullPointerException ex) {
+                            String war = " No account with given id";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
 
-                            } catch (DataAccessException ex) {
-                                String war = "No Access ";
-                                warlab.setText(war);
-                                warlab.setFont(Font.font ("Times New Roman" , 20));
-                                warlab.setTextFill(Color.RED);
-                                topMenu.getChildren().add(warlab);
+                        } catch (DataAccessException ex) {
+                            String war = "No Access ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
+                        } catch (Exception ex) {
+                            String war = " Error ";
+                            warlab.setText(war);
+                            warlab.setFont(Font.font("Times New Roman", 20));
+                            warlab.setTextFill(Color.RED);
+                            topMenu.getChildren().add(warlab);
                         }
-                    });
                 });
-
             });
 
-
-
+        });
 
 
         b5.setOnAction(event -> {
             clear();
             String title = "Choose one";
             label2.setText(title);
-            label2.setFont(Font.font ("Times New Roman" , 20));
+            label2.setFont(Font.font("Times New Roman", 20));
             label2.setTextFill(Color.CORAL);
             label2.setTranslateX(170);
 
             topMenu.getChildren().addAll(label2, b7, b8);
 
-            b7.setOnAction(e-> {
+            b7.setOnAction(e -> {
                 clear();
-            try{
-                ClientDaoImpl clientDao = new ClientDaoImpl();
-                //clientDao.findAll();
-                    if(clientDao.findAll().isEmpty()) {
+                try {
+                    ClientDaoImpl clientDao = new ClientDaoImpl();
+                    //clientDao.findAll();
+                    if (clientDao.findAll().isEmpty()) {
                         String war = "Clients list is empty ";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.GREEN);
                         topMenu.getChildren().add(warlab);
-                    }
-                        else {
+                    } else {
                         clear();
                         listView = new ListView();
                         listView.getItems().addAll(clientDao.findAll());
@@ -537,54 +568,65 @@ public class main extends Application implements EventHandler<ActionEvent> {
                 } catch (NumberFormatException ex) {
                     String war = " Incorrect Data Format ";
                     warlab.setText(war);
-                    warlab.setFont(Font.font ("Times New Roman" , 20));
+                    warlab.setFont(Font.font("Times New Roman", 20));
                     warlab.setTextFill(Color.RED);
                     topMenu.getChildren().add(warlab);
-                }  catch (DataAccessException ex) {
+                } catch (DataAccessException ex) {
                     String war = " Incorrect Data Format ";
                     warlab.setText(war);
-                    warlab.setFont(Font.font ("Times New Roman" , 20));
+                    warlab.setFont(Font.font("Times New Roman", 20));
+                    warlab.setTextFill(Color.RED);
+                    topMenu.getChildren().add(warlab);
+                } catch (Exception ex) {
+                    String war = " Error ";
+                    warlab.setText(war);
+                    warlab.setFont(Font.font("Times New Roman", 20));
                     warlab.setTextFill(Color.RED);
                     topMenu.getChildren().add(warlab);
                 }
             });
 
-            b8.setOnAction(e-> {
+            b8.setOnAction(e -> {
                 clear();
-                try{
+                try {
                     AccountDaoImpl accountDao = new AccountDaoImpl();
-                    if(accountDao.findAll().isEmpty())
-                    {
+                    if (accountDao.findAll().isEmpty()) {
                         String war = "Accounts list is empty ";
                         warlab.setText(war);
-                        warlab.setFont(Font.font ("Times New Roman" , 20));
+                        warlab.setFont(Font.font("Times New Roman", 20));
                         warlab.setTextFill(Color.GREEN);
-                        topMenu.getChildren().add(warlab);}
-                    else {
+                        topMenu.getChildren().add(warlab);
+                    } else {
                         clear();
                         listView = new ListView();
                         listView.getItems().addAll(accountDao.findAll());
                         topMenu.getChildren().addAll(listView);
                         listView.getItems().removeAll();
 
-                        }
-                }catch (NumberFormatException ex) {
+                    }
+                } catch (NumberFormatException ex) {
                     String war = " Incorrect Data Format ";
                     warlab.setText(war);
-                    warlab.setFont(Font.font ("Times New Roman" , 20));
+                    warlab.setFont(Font.font("Times New Roman", 20));
                     warlab.setTextFill(Color.RED);
                     topMenu.getChildren().add(warlab);
-                }catch (DataAccessException ex) {
+                } catch (DataAccessException ex) {
                     String war = " Incorrect Data Format ";
                     warlab.setText(war);
-                    warlab.setFont(Font.font ("Times New Roman" , 20));
+                    warlab.setFont(Font.font("Times New Roman", 20));
+                    warlab.setTextFill(Color.RED);
+                    topMenu.getChildren().add(warlab);
+                } catch (Exception ex) {
+                    String war = " Error ";
+                    warlab.setText(war);
+                    warlab.setFont(Font.font("Times New Roman", 20));
                     warlab.setTextFill(Color.RED);
                     topMenu.getChildren().add(warlab);
                 }
             });
-    });
+        });
 
-    Scene scene = new Scene(borderpane, 450, 500);
+        Scene scene = new Scene(borderpane, 450, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -595,7 +637,6 @@ public class main extends Application implements EventHandler<ActionEvent> {
         topMenu.getChildren().remove(text2);
         topMenu.getChildren().remove(text3);
         topMenu.getChildren().remove(text4);
-        //  topMenu.getChildren().remove(label1);
         topMenu.getChildren().remove(label2);
         topMenu.getChildren().remove(label3);
         topMenu.getChildren().remove(warlab);
