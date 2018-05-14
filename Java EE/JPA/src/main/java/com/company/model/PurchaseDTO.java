@@ -7,9 +7,6 @@ import javax.persistence.*;
 import  java.util.Date.*;
 @Entity
 @Table(name="PURCHASE")
-@NamedQueries({@NamedQuery(name = "PurchaseDTO.selectAllPurchases",query = "SELECT p From PurchaseDTO p"),
-        @NamedQuery(name="PurchaseDTO.selectAllPurchasesDISTINCT", query= "SELECT DISTINCT p FROM PurchaseDTO p LEFT JOIN FETCH p.purchaseItems i" )})
-
 public class PurchaseDTO extends AbstractDTO {
 
     private String location;
