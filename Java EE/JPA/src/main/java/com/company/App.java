@@ -6,10 +6,6 @@ import com.company.model.*;
 import java.util.Date;
 import java.util.LinkedList;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -62,14 +58,16 @@ public class App
 
         purchaseDTO.setPurchaseItems(items);
 
-        /*
+
         customerDao.save(customerDTO);
         deliveryCompanyDao.save(deliveryCompanyDTO);
         productDao.save(productDTO);
         purchaseDao.save(purchaseDTO);
         purchaseItemDao.save(purchaseItemDTO);
 
-        */
+
+
+
 
      //UPDATE:
         /*

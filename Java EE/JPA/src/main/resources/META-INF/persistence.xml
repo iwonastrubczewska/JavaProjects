@@ -5,6 +5,7 @@
 
     <persistence-unit name="myDatabase" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <shared-cache-mode>NONE</shared-cache-mode>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

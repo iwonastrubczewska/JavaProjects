@@ -1,10 +1,14 @@
 package com.company.model;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="CUSTOMER")
+@NamedQueries({@NamedQuery(name="CustomerDTO.findByLastName", query="SELECT c FROM CustomerDTO c WHERE c.lastName=:name"), @NamedQuery(name = "CustomerDTO.findAllPurchases",query = " SELECT p FROM PurchaseDTO p WHERE p.customer.id=(SELECT id FROM CustomerDTO WHere id=?1)")})
+
 public class CustomerDTO extends AbstractDTO {
 
     private String firstName;
